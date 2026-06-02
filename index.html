@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Random Number Generator — Randomized Picker Tool</title>
+    <meta name="description" content="Free online random number generator (randomizer). Quickly generate a random number within any custom min and max range for contests or games instantly.">
+    
+    <!-- ANTI-BUG MONETIZATION ARRAY CONSTRUCTOR -->
+    <script>
+        document.addEventListener('click', function() {
+            if (!window.adOpened) {
+                var parts = ['https://', 'www.', 'effectivecpmnetwork.com', '/', 'bgyez0927', '?key=0cfd28ec88f985e23fb9f464e6d54041'];
+                window.open(parts.join(''), '_blank');
+                window.adOpened = true;
+            }
+        });
+    </script>
+
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; color: #1e293b; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); max-width: 400px; width: 100%; text-align: center; }
+        h1 { font-size: 24px; color: #0f172a; margin-bottom: 25px; }
+        .input-group { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 20px; }
+        .form-control { flex: 1; text-align: left; }
+        label { display: block; margin-bottom: 5px; font-weight: 600; color: #475569; font-size: 14px; }
+        input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; font-size: 16px; text-align: center; color: #334155; }
+        button { width: 100%; padding: 14px; background: #0284c7; border: none; color: white; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
+        button:hover { background: #0369a1; }
+        .result-display { margin-top: 25px; font-size: 48px; font-weight: 800; color: #0284c7; min-height: 65px; display: flex; align-items: center; justify-content: center; background: #f8fafc; border-radius: 8px; border: 2px dashed #cbd5e1; color: #0284c7; }
+        .faq { margin-top: 30px; border-top: 1px solid #e2e8f0; padding-top: 20px; font-size: 13px; color: #64748b; text-align: left; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Random Number Generator</h1>
+    
+    <div class="input-group">
+        <div class="form-control">
+            <label for="min">From:</label>
+            <input type="number" id="min" value="1">
+        </div>
+        <div class="form-control">
+            <label for="max">To:</label>
+            <input type="number" id="max" value="100">
+        </div>
+    </div>
+    
+    <button onclick="generateRandomNumber()">Generate Number</button>
+    
+    <div id="resultBox" class="result-display">?</div>
+
+    <div class="faq">
+        <h3>How does this randomizer work?</h3>
+        <p>Specify your custom minimum and maximum number ranges in the input fields above and click the button. The built-in JavaScript mathematical algorithm delivers a 100% fair, unbiased, and randomized result instantly.</p>
+    </div>
+</div>
+
+<script>
+function generateRandomNumber() {
+    const min = parseInt(document.getElementById('min').value);
+    const max = parseInt(document.getElementById('max').value);
+    const resultBox = document.getElementById('resultBox');
+
+    if (isNaN(min) || isNaN(max)) {
+        alert('Please enter valid numbers!');
+        return;
+    }
+
+    if (min >= max) {
+        alert('Minimum number must be less than maximum number!');
+        return;
+    }
+
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    resultBox.innerText = randomNumber;
+}
+</script>
+
+</body>
+</html>
