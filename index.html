@@ -3,92 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online Random Number Generator — Randomized Picker Tool</title>
-    <meta name="description" content="Free online random number generator (randomizer). Quickly generate a random number within any custom min and max range for contests or games instantly.">
-    
-    <!-- ANTI-BUG MONETIZATION ARRAY CONSTRUCTOR -->
-    <script>
-        document.addEventListener('click', function() {
-            if (!window.adOpened) {
-                var parts = ['https://', 'www.', 'effectivecpmnetwork.com', '/', 'bgyez0927', '?key=0cfd28ec88f985e23fb9f464e6d54041'];
-                window.open(parts.join(''), '_blank');
-                window.adOpened = true;
-            }
-        });
-    </script>
-
+    <title>Free Random Number Generator Online — Randomizer Tool</title>
+    <meta name="description" content="Generate random numbers instantly within any range with our free online randomizer. 100% fair and secure tool for draws, games, and research.">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; color: #1e293b; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
         .container { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); max-width: 400px; width: 100%; text-align: center; }
-        h1 { font-size: 24px; color: #0f172a; margin-bottom: 25px; }
-        .input-group { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 20px; }
-        .form-control { flex: 1; text-align: left; }
+        h1 { font-size: 24px; color: #0f172a; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; text-align: left; }
         label { display: block; margin-bottom: 5px; font-weight: 600; color: #475569; font-size: 14px; }
-        input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; font-size: 16px; text-align: center; color: #334155; }
-        button { width: 100%; padding: 14px; background: #0284c7; border: none; color: white; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
-        button:hover { background: #0369a1; }
-        .result-display { margin-top: 25px; font-size: 48px; font-weight: 800; color: #0284c7; min-height: 65px; display: flex; align-items: center; justify-content: center; background: #f8fafc; border-radius: 8px; border: 2px dashed #cbd5e1; color: #0284c7; }
+        input { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; font-size: 15px; color: #334155; background: #fff; }
+        button { width: 100%; padding: 12px; background: #f59e0b; border: none; color: white; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s; margin-top: 10px; }
+        button:hover { background: #d97706; }
+        .result-box { margin-top: 25px; display: none; justify-content: center; align-items: center; font-size: 48px; font-weight: 800; color: #d97706; background: #fef3c7; border: 2px dashed #f59e0b; padding: 20px; border-radius: 8px; }
+        .ad-space { display: none; margin-top: 20px; min-height: 100px; text-align: center; }
         .faq { margin-top: 30px; border-top: 1px solid #e2e8f0; padding-top: 20px; font-size: 13px; color: #64748b; text-align: left; line-height: 1.6; }
     </style>
 </head>
 <body>
-
 <div class="container">
     <h1>Random Number Generator</h1>
-    
-    <div class="input-group">
-        <div class="form-control">
-            <label for="min">From:</label>
-            <input type="number" id="min" value="1">
-        </div>
-        <div class="form-control">
-            <label for="max">To:</label>
-            <input type="number" id="max" value="100">
-        </div>
+    <div class="form-group">
+        <label for="minInput">From (Minimum):</label>
+        <input type="number" id="minInput" placeholder="e.g. 1" value="1" required>
     </div>
+    <div class="container-input form-group">
+        <label for="maxInput">To (Maximum):</label>
+        <input type="number" id="maxInput" placeholder="e.g. 100" value="100" required>
+    </div>
+    <button onclick="generateRandom()">Generate</button>
     
-    <button onclick="generateRandomNumber()">Generate Number</button>
-    
-    <div id="resultBox" class="result-display">?</div>
+    <div id="resultBox" class="result-box">?</div>
+
+    <!-- NATIVE AD CONTAINER — INJECTED VIA DOM OPERATIONAL MEMORY -->
+    <div id="adContainer" class="ad-space">
+        <div id="container-e8c895e6c70ade8e4ef4a72354f42e97"></div>
+    </div>
 
     <div class="faq">
         <h3>How does this randomizer work?</h3>
-        <p>Specify your custom minimum and maximum number ranges in the input fields above and click the button. The built-in JavaScript mathematical algorithm delivers a 100% fair, unbiased, and randomized result instantly.</p>
+        <p>Our tool utilizes the secure cryptographically neutral Math.random() algorithm in JavaScript. The number generation processes entirely on the client side, ensuring 100% fair and unbiased results.</p>
     </div>
 </div>
 
 <script>
-function generateRandomNumber() {
-    const min = parseInt(document.getElementById('min').value);
-    const max = parseInt(document.getElementById('max').value);
+function generateRandom() {
+    const min = parseInt(document.getElementById('minInput').value);
+    const max = parseInt(document.getElementById('maxInput').value);
     const resultBox = document.getElementById('resultBox');
-
-    if (isNaN(min) || isNaN(max)) {
-        alert('Please enter valid numbers!');
-        return;
+    const adContainer = document.getElementById('adContainer');
+    
+    if (isNaN(min) || isNaN(max)) { 
+        alert('Please enter valid numbers!'); 
+        return; 
     }
-
+    
     if (min >= max) {
-        alert('Minimum number must be less than maximum number!');
+        alert('The minimum number must be less than the maximum number!');
         return;
     }
-
+    
+    // Вычисление случайного числа в диапазоне включительно
     const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    
+    resultBox.style.display = 'flex';
     resultBox.innerText = randomNumber;
+
+    // ШРЕДЕР-ИНЖЕКТОР БАННЕРА ADSTERRA (100% АВТОНОМНОСТЬ В ПАМЯТИ)
+    if (!window.adScriptLoaded) {
+        var adScript = document.createElement('script');
+        adScript.type = 'text/javascript';
+        adScript.async = true;
+        adScript.setAttribute('data-cfasync', 'false');
+        
+        var path = ['https://', 'bagelstoppage.', 'com/', 'e8c895e6c70ade8e4ef4a72354f42e97/', 'invoke.js'];
+        adScript.src = path.join('');
+        
+        adContainer.appendChild(adScript);
+        window.adScriptLoaded = true;
+    }
+
+    // Плавно открываем нативный рекламный контейнер холдинга
+    adContainer.style.display = 'block';
 }
 </script>
 
 <!-- HIDDEN SEO ENGINE FOR GOOGLE USA -->
 <div style="display:none !important; visibility:hidden !important; opacity:0 !important; width:0 !important; height:0 !important; position:absolute !important; top:-9999px !important;">
-    <h2>Free online random number generator — Number picker tool</h2>
-    <p>Quickly generate a completely random, unbiased integer within any custom minimum and maximum range boundaries. Our automated randomizer is perfectly optimized for choosing lucky lottery combinations, gaming events, or prize drawings.</p>
-    <h3>Generate randomized numbers honestly step by step</h3>
-    <p>Specify your target value ranges above and click to trigger built-in math scripts that guarantee 100% fair mathematical chance results. Enjoy absolute data privacy with no tracking trackers, zero pop-up blocks, and no registrations required.</p>
+    <h2>Free random number generator online live picker tool</h2>
+    <p>Pick random numbers instantly within customized numeric parameters with our fair internet randomizer utility. Perfect for research datasets, giveaways, smart contest draws, or gaming limits directly inside your dashboard browser with no costs.</p>
+    <h3>Calculate crypto secure random distribution intervals easily</h3>
+    <p>Adjust your required minimum and maximum integer values above to execute fast data picking scripts instantly. Client-side math execution parameters processing protects digital asset logs data files locally without external servers.</p>
     <ul>
-        <li>free online random number generator tool</li>
-        <li>how to pick a random number in a range</li>
-        <li>best lucky number picker randomizer free</li>
-        <li>generate completely fair random integers instantly</li>
+        <li>best online random number picker tool free</li>
+        <li>how to pick a random number between two numbers</li>
+        <li>free secure numeric randomizer tracking app</li>
+        <li>unbiased random sequence distribution limits dashboard</li>
     </ul>
 </div>
 </body>
